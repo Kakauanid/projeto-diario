@@ -7,11 +7,12 @@ app.secret_key = 'sua_chave_secreta'
 def login():
     if request.method == 'POST':
         username = request.form['username']
-        return redirect(url_for('diario', user=username))
+        return redirect(url_for('diario'))
     return render_template('login.html')
     
-@app.route('/diario/<user>')
-def diario(user):
+@app.route('/diario')
+def diario():
+    user = session.get('username', 'Visitante')
     return render_template('diario.html', user=user)
 
 if __name__ == '__main__':

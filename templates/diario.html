@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diário Emocional</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='icone.png') }}" type="image/x-icon">
+</head>
+<body>
+    <header class="topo-diario">
+        <img src="{{ url_for('static', filename='diario-aberto.png') }}" alt="Diário Aberto">
+        <h1>Bem-vindo, {{ user }}</h1>
+    </header>
+
+    <main class="conteudo-principal">
+        <section class="formulario-emocao">
+            <form id="formEntrada">
+                <label for="emocao">Como você está se sentindo hoje?</label>
+                <select id="emocao" name="emocao" required>
+                    <option value="">Selecione</option>
+                    <option value="Feliz">Feliz</option>
+                    <option value="Calmo">Calmo</option>
+                    <option value="Ansioso">Ansioso</option>
+                    <option value="Triste">Triste</option>
+                </select>
+
+                <label for="texto">Escreva sobre seu dia:</label>
+                <textarea id="texto" name="texto" rows="5" placeholder="Digite aqui..." required></textarea>
+                <button type="submit">Salvar</button>
+            </form>
+        </section>
+
+        <section class="graficos-emocoes">
+            <h2>Sua Jornada Emocional</h2>
+            <canvas id="graficosEmocoes" width="400" height="200"></canvas>
+        </section>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
